@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>documents</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>AJKSqliteDatabase Tests</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>AJKSqliteDatabase Tests</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>AJKSqliteDatabase Tests/AJKSqliteDatabase Tests-Info.plist</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>AJKSqliteDatabase Tests/AJKSqliteDatabase Tests-Prefix.pch</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>AJKSqliteDatabase Tests/AJKSqliteDatabaseTests.h</string>
+			<key>selected</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>AJKSqliteDatabase Tests/AJKSqliteDatabaseTests.m</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>en.lproj</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>AJKSqliteDatabase Tests/en.lproj</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>GHUnit.framework</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>AJKSqliteDatabase Tests/GHUnit.framework</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>AJKSqliteDatabase Tests/main.m</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>AJKSqliteDatabase Tests.xcodeproj</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>AJKSqliteDatabase Tests.xcodeproj</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Source</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>Source</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Source/AJKResultSet.h</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Source/AJKResultSet.m</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Source/AJKSqliteDatabase.h</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Source/AJKSqliteDatabase.m</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Source/AJKSqliteStatement.h</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Source/AJKSqliteStatement.m</string>
+		</dict>
+	</array>
+	<key>fileHierarchyDrawerWidth</key>
+	<integer>200</integer>
+	<key>metaData</key>
+	<dict/>
+	<key>showFileHierarchyDrawer</key>
+	<false/>
+	<key>windowFrame</key>
+	<string>{{80, 4}, {1387, 1061}}</string>
+</dict>
+</plist>

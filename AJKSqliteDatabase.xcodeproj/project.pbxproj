@@ -1,0 +1,330 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A13F2F7141FB7FD00096C1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A13F2F6141FB7FD00096C1A /* main.m */; };
+		4A13F2F8141FB80700096C1A /* GHUnit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB687DC141FB4F20004B948 /* GHUnit.framework */; };
+		4A3632BE141E5F0400D47B8C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3632BD141E5F0400D47B8C /* Cocoa.framework */; };
+		4A3632EA141E611A00D47B8C /* AJKResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3632E5141E611A00D47B8C /* AJKResultSet.m */; };
+		4A3632EB141E611A00D47B8C /* AJKSqliteDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3632E7141E611A00D47B8C /* AJKSqliteDatabase.m */; };
+		4A3632EC141E611A00D47B8C /* AJKSqliteStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3632E9141E611A00D47B8C /* AJKSqliteStatement.m */; };
+		4A3632EE141E6DA900D47B8C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3632ED141E6DA900D47B8C /* libsqlite3.dylib */; };
+		4AB687D0141FB4A00004B948 /* AJKSqliteDatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB687CF141FB4A00004B948 /* AJKSqliteDatabaseTests.m */; };
+		4AB687DB141FB4DD0004B948 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB687DA141FB4DD0004B948 /* MainMenu.xib */; };
+		4AB687DD141FB4F20004B948 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB687DC141FB4F20004B948 /* GHUnit.framework */; };
+		4AF11DBC141E84C9008858E4 /* AJKBlockFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF11DBB141E84C9008858E4 /* AJKBlockFunctions.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4A3632DC141E5F5800D47B8C /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4A13F2F8141FB80700096C1A /* GHUnit.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4A13F2F6141FB7FD00096C1A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Tests/main.m; sourceTree = SOURCE_ROOT; };
+		4A3632B9141E5F0400D47B8C /* AJKSqliteDatabase Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AJKSqliteDatabase Tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A3632BD141E5F0400D47B8C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		4A3632C0141E5F0400D47B8C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		4A3632C1141E5F0400D47B8C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4A3632C2141E5F0400D47B8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4A3632E4141E611A00D47B8C /* AJKResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJKResultSet.h; sourceTree = "<group>"; };
+		4A3632E5141E611A00D47B8C /* AJKResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJKResultSet.m; sourceTree = "<group>"; };
+		4A3632E6141E611A00D47B8C /* AJKSqliteDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJKSqliteDatabase.h; sourceTree = "<group>"; };
+		4A3632E7141E611A00D47B8C /* AJKSqliteDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJKSqliteDatabase.m; sourceTree = "<group>"; };
+		4A3632E8141E611A00D47B8C /* AJKSqliteStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJKSqliteStatement.h; sourceTree = "<group>"; };
+		4A3632E9141E611A00D47B8C /* AJKSqliteStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJKSqliteStatement.m; sourceTree = "<group>"; };
+		4A3632ED141E6DA900D47B8C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		4AB687CE141FB4A00004B948 /* AJKSqliteDatabaseTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJKSqliteDatabaseTests.h; path = Tests/AJKSqliteDatabaseTests.h; sourceTree = SOURCE_ROOT; };
+		4AB687CF141FB4A00004B948 /* AJKSqliteDatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJKSqliteDatabaseTests.m; path = Tests/AJKSqliteDatabaseTests.m; sourceTree = SOURCE_ROOT; };
+		4AB687D2141FB4AD0004B948 /* AJKSqliteDatabase Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AJKSqliteDatabase Tests-Info.plist"; path = "Tests/AJKSqliteDatabase Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		4AB687D9141FB4C30004B948 /* AJKSqliteDatabase Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AJKSqliteDatabase Tests-Prefix.pch"; path = "Tests/AJKSqliteDatabase Tests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		4AB687DA141FB4DD0004B948 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Tests/MainMenu.xib; sourceTree = SOURCE_ROOT; };
+		4AB687DC141FB4F20004B948 /* GHUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnit.framework; path = Tests/GHUnit.framework; sourceTree = "<group>"; };
+		4AF11DBA141E84C9008858E4 /* AJKBlockFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJKBlockFunctions.h; sourceTree = "<group>"; };
+		4AF11DBB141E84C9008858E4 /* AJKBlockFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJKBlockFunctions.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4A3632B6141E5F0400D47B8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A3632EE141E6DA900D47B8C /* libsqlite3.dylib in Frameworks */,
+				4A3632BE141E5F0400D47B8C /* Cocoa.framework in Frameworks */,
+				4AB687DD141FB4F20004B948 /* GHUnit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4A3632AE141E5F0300D47B8C = {
+			isa = PBXGroup;
+			children = (
+				4A3632E3141E611A00D47B8C /* Source */,
+				4A3632C3141E5F0400D47B8C /* Tests */,
+				4A3632C4141E5F0400D47B8C /* Supporting Files */,
+				4A3632BC141E5F0400D47B8C /* Frameworks */,
+				4A3632BA141E5F0400D47B8C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4A3632BA141E5F0400D47B8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A3632B9141E5F0400D47B8C /* AJKSqliteDatabase Tests.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A3632BC141E5F0400D47B8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A3632BD141E5F0400D47B8C /* Cocoa.framework */,
+				4AB687DC141FB4F20004B948 /* GHUnit.framework */,
+				4A3632ED141E6DA900D47B8C /* libsqlite3.dylib */,
+				4A3632BF141E5F0400D47B8C /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4A3632BF141E5F0400D47B8C /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A3632C0141E5F0400D47B8C /* AppKit.framework */,
+				4A3632C1141E5F0400D47B8C /* CoreData.framework */,
+				4A3632C2141E5F0400D47B8C /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		4A3632C3141E5F0400D47B8C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4AB687CE141FB4A00004B948 /* AJKSqliteDatabaseTests.h */,
+				4AB687CF141FB4A00004B948 /* AJKSqliteDatabaseTests.m */,
+			);
+			name = Tests;
+			path = "AJKSqliteDatabase Tests";
+			sourceTree = "<group>";
+		};
+		4A3632C4141E5F0400D47B8C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4AB687D2141FB4AD0004B948 /* AJKSqliteDatabase Tests-Info.plist */,
+				4AB687D9141FB4C30004B948 /* AJKSqliteDatabase Tests-Prefix.pch */,
+				4AB687DA141FB4DD0004B948 /* MainMenu.xib */,
+				4A13F2F6141FB7FD00096C1A /* main.m */,
+			);
+			name = "Supporting Files";
+			path = "AJKSqliteDatabase Tests";
+			sourceTree = "<group>";
+		};
+		4A3632E3141E611A00D47B8C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				4A3632E4141E611A00D47B8C /* AJKResultSet.h */,
+				4A3632E5141E611A00D47B8C /* AJKResultSet.m */,
+				4A3632E6141E611A00D47B8C /* AJKSqliteDatabase.h */,
+				4A3632E7141E611A00D47B8C /* AJKSqliteDatabase.m */,
+				4A3632E8141E611A00D47B8C /* AJKSqliteStatement.h */,
+				4A3632E9141E611A00D47B8C /* AJKSqliteStatement.m */,
+				4AF11DBA141E84C9008858E4 /* AJKBlockFunctions.h */,
+				4AF11DBB141E84C9008858E4 /* AJKBlockFunctions.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4A3632B8141E5F0400D47B8C /* AJKSqliteDatabase Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A3632D7141E5F0400D47B8C /* Build configuration list for PBXNativeTarget "AJKSqliteDatabase Tests" */;
+			buildPhases = (
+				4A3632B5141E5F0400D47B8C /* Sources */,
+				4A3632B6141E5F0400D47B8C /* Frameworks */,
+				4A3632B7141E5F0400D47B8C /* Resources */,
+				4A3632DC141E5F5800D47B8C /* Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AJKSqliteDatabase Tests";
+			productName = "AJKSqliteDatabase Tests";
+			productReference = 4A3632B9141E5F0400D47B8C /* AJKSqliteDatabase Tests.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4A3632B0141E5F0300D47B8C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Inquisitive Software";
+			};
+			buildConfigurationList = 4A3632B3141E5F0300D47B8C /* Build configuration list for PBXProject "AJKSqliteDatabase" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4A3632AE141E5F0300D47B8C;
+			productRefGroup = 4A3632BA141E5F0400D47B8C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4A3632B8141E5F0400D47B8C /* AJKSqliteDatabase Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4A3632B7141E5F0400D47B8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AB687DB141FB4DD0004B948 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4A3632B5141E5F0400D47B8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A3632EA141E611A00D47B8C /* AJKResultSet.m in Sources */,
+				4A3632EB141E611A00D47B8C /* AJKSqliteDatabase.m in Sources */,
+				4A3632EC141E611A00D47B8C /* AJKSqliteStatement.m in Sources */,
+				4AF11DBC141E84C9008858E4 /* AJKBlockFunctions.m in Sources */,
+				4AB687D0141FB4A00004B948 /* AJKSqliteDatabaseTests.m in Sources */,
+				4A13F2F7141FB7FD00096C1A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4A3632D5141E5F0400D47B8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4A3632D6141E5F0400D47B8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4A3632D8141E5F0400D47B8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Tests\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/AJKSqliteDatabase Tests-Prefix.pch";
+				INFOPLIST_FILE = "Tests/AJKSqliteDatabase Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4A3632D9141E5F0400D47B8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Tests\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/AJKSqliteDatabase Tests-Prefix.pch";
+				INFOPLIST_FILE = "Tests/AJKSqliteDatabase Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4A3632B3141E5F0300D47B8C /* Build configuration list for PBXProject "AJKSqliteDatabase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A3632D5141E5F0400D47B8C /* Debug */,
+				4A3632D6141E5F0400D47B8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A3632D7141E5F0400D47B8C /* Build configuration list for PBXNativeTarget "AJKSqliteDatabase Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A3632D8141E5F0400D47B8C /* Debug */,
+				4A3632D9141E5F0400D47B8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4A3632B0141E5F0300D47B8C /* Project object */;
+}
