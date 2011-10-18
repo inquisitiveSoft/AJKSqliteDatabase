@@ -22,8 +22,8 @@ extern NSString *const AJKSqliteDatabaseError;
 // 
 - (BOOL)executeUpdate:(NSString *)query;
 - (BOOL)executeUpdate:(NSString *)query withArguments:(NSArray *)arguments error:(NSError **)outError;
-- (AJKResultSet *)executequery:(NSString *)query;
-- (AJKResultSet *)executequery:(NSString *)query withArguments:(NSArray *)arguments error:(NSError **)outError;
+- (AJKResultSet *)executeQuery:(NSString *)query;
+- (AJKResultSet *)executeQuery:(NSString *)query withArguments:(NSArray *)arguments error:(NSError **)outError;
 
 // 
 - (BOOL)rollback;

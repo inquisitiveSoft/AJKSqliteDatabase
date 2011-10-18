@@ -88,7 +88,7 @@
 	GHAssertTrue(result, @"Failed to insert a row into the trees table");
 	
 	error = nil;
-	AJKResultSet *resultSet = [database executequery:@"select * from trees" withArguments:nil error:&error];
+	AJKResultSet *resultSet = [database executeQuery:@"select * from trees" withArguments:nil error:&error];
 	GHAssertTrue((BOOL)resultSet, @"select * from trees, failed, %@", error);
 	
 	error = nil;

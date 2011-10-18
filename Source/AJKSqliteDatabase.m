@@ -153,13 +153,13 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 }
 
 
-- (AJKResultSet *)executequery:(NSString *)query
+- (AJKResultSet *)executeQuery:(NSString *)query
 {
-	return [self executequery:query withArguments:nil error:NULL];
+	return [self executeQuery:query withArguments:nil error:NULL];
 }
 
 
-- (AJKResultSet *)executequery:(NSString *)query withArguments:(NSArray *)arguments error:(NSError **)outError
+- (AJKResultSet *)executeQuery:(NSString *)query withArguments:(NSArray *)arguments error:(NSError **)outError
 {
 	AJKSqliteStatement *statement = [self statementForquery:query error:outError];
 	if(!statement)
