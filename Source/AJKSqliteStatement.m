@@ -23,7 +23,7 @@
 @synthesize query = query_, statementHandle = statementHandle_;
 
 
-- (id)initForquery:(NSString *)query withHandle:(sqlite3_stmt *)statementHandle
+- (id)initForQuery:(NSString *)query withHandle:(sqlite3_stmt *)statementHandle
 {
 	self = [super init];
 	

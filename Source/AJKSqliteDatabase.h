@@ -25,13 +25,19 @@ extern NSString *const AJKSqliteDatabaseError;
 - (AJKResultSet *)executeQuery:(NSString *)query;
 - (AJKResultSet *)executeQuery:(NSString *)query withArguments:(NSArray *)arguments error:(NSError **)outError;
 
+// Create table
+- (BOOL)createTable:(NSString *)tableName withString:(NSString *)columns;
+
 // 
 - (BOOL)rollback;
 - (BOOL)commit;
 - (BOOL)beginTransaction;
 - (BOOL)beginDeferredTransaction;
 
-// querying the status of the database
+// Manage tables
+- (BOOL)createTable:(NSString *)tableName withColumns:(NSString *)columns;
+
+// Querying the status of the database
 - (int64_t)identifierOfLastInsert;
 - (int)numberOfChanges;
 - (BOOL)hasEncounteredError;

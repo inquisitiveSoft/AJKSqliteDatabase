@@ -13,7 +13,7 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 	NSMutableDictionary *cachedStatements_, *activeResultsSets_;
 }
 
-- (AJKSqliteStatement *)statementForquery:(NSString *)query error:(NSError **)outError;
+- (AJKSqliteStatement *)statementForQuery:(NSString *)query error:(NSError **)outError;
 - (void)bindObject:(id)objectToBind toColumn:(int)columnIndex inStatement:(sqlite3_stmt *)statement;
 
 // Managing result sets
@@ -83,7 +83,7 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 
 - (BOOL)executeUpdate:(NSString *)query withArguments:(NSArray *)arguments error:(NSError **)outError
 {
-	AJKSqliteStatement *statement = [self statementForquery:query error:outError];
+	AJKSqliteStatement *statement = [self statementForQuery:query error:outError];
 	if(!statement)
 		return NO;
 	
@@ -161,7 +161,7 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 
 - (AJKResultSet *)executeQuery:(NSString *)query withArguments:(NSArray *)arguments error:(NSError **)outError
 {
-	AJKSqliteStatement *statement = [self statementForquery:query error:outError];
+	AJKSqliteStatement *statement = [self statementForQuery:query error:outError];
 	if(!statement)
 		return nil;
 	
@@ -249,12 +249,10 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 }
 
 
-
-
 #pragma mark -
 #pragma mark Manage statements
 
-- (AJKSqliteStatement *)statementForquery:(NSString *)query error:(NSError **)outError {
+- (AJKSqliteStatement *)statementForQuery:(NSString *)query error:(NSError **)outError {
 	// Look for an existing statement matching the query
 	__block AJKSqliteStatement *statement = nil;
 	@synchronized(self) {
@@ -287,7 +285,7 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 		
 		if(result == SQLITE_OK) {
 			// AJKSqliteStatement will call sqlite3_finalize() with the statement handle when it's dealloced
-			statement = [[AJKSqliteStatement alloc] initForquery:query withHandle:statementHandle];
+			statement = [[AJKSqliteStatement alloc] initForQuery:query withHandle:statementHandle];
 			[statement incrementUseCount];
 			
 			@synchronized(self) {
@@ -370,7 +368,37 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 
 
 #pragma mark -
-#pragma mark querying the status of the database
+#pragma mark Manage tables
+
+- (BOOL)createTable:(NSString *)tableName withColumns:(NSDictionary *)columnsForTypes
+{
+	if(!tableName || ([tableName length] <= 0))
+		return FALSE;
+	
+	// Search in sqlite_master table if table exists
+	AJKResultSet *resultSet = [self executeQuery:@"select [sql] from sqlite_master where [type] = 'table' and lower(name) = ?" withArguments:[NSArray arrayWithObject:[tableName lowercaseString]] error:nil];
+	BOOL foundTable = [resultSet nextRow];
+	[resultSet close];
+	
+	// Create the table if an existing one couldn't be found
+	if(!foundTable) {
+		NSMutableString *columnsString = [[NSMutableString alloc] initWithString:@" "];
+		[columnsForTypes enumerateKeysAndObjectsUsingBlock:^ (id key, id object) {
+			[columnsString appendFormat:@"%@ %@, ", key, object];
+		}];
+		
+		return [self executeUpdate:@"create table ? (?)" withArguments:[NSArray arrayWithObjects:tableName, columnsString, nil] error:nil];
+	}
+	
+	// Check that the table contains the right columns
+	
+	
+	return TRUE;
+}
+
+
+#pragma mark -
+#pragma mark Querying the status of the database
 
 
 - (int64_t)identifierOfLastInsert {
@@ -424,7 +452,7 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 #pragma mark Help methods
 
 
-- (BOOL)validateSQL:(NSString *)sqlquery error:(NSError **)outError
+- (BOOL)validateSQL:(NSString *)sqlQuery error:(NSError **)outError
 {
 	int numberOfAttemptsToTry = [self numberOfAttemptsToTry];
 	__block int result = 0;
@@ -434,7 +462,7 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 		sqlite3_stmt *statementHandle = NULL;
 		
 		do {
-			result = sqlite3_prepare_v2(database, [sqlquery UTF8String], -1, &statementHandle, 0);
+			result = sqlite3_prepare_v2(database, [sqlQuery UTF8String], -1, &statementHandle, 0);
 			
 			if(result == SQLITE_BUSY || result == SQLITE_LOCKED) {
 				usleep(20);
@@ -450,7 +478,7 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 	if(result == SQLITE_OK)
 		return TRUE;
 	else if(result == SQLITE_BUSY || result == SQLITE_LOCKED)
-		NSLog(@"Couldn't validate the '%@' query because the '%@' database was busy", sqlquery, [[self databaseURL] path]);
+		NSLog(@"Couldn't validate the '%@' query because the '%@' database was busy", sqlQuery, [[self databaseURL] path]);
 	
 	if(outError != NULL) {
 		NSDictionary *errorDictionary = [NSDictionary dictionaryWithObject:[self lastErrorMessage] forKey:NSLocalizedDescriptionKey];
