@@ -25,17 +25,14 @@ extern NSString *const AJKSqliteDatabaseError;
 - (AJKResultSet *)executeQuery:(NSString *)query;
 - (AJKResultSet *)executeQuery:(NSString *)query withArguments:(NSArray *)arguments error:(NSError **)outError;
 
-// Create table
-- (BOOL)createTable:(NSString *)tableName withString:(NSString *)columns;
+// Manage tables
+- (BOOL)createTable:(NSString *)tableName withColumns:(NSDictionary *)columnsForTypes error:(NSError **)outError;
 
 // 
 - (BOOL)rollback;
 - (BOOL)commit;
 - (BOOL)beginTransaction;
 - (BOOL)beginDeferredTransaction;
-
-// Manage tables
-- (BOOL)createTable:(NSString *)tableName withColumns:(NSString *)columns;
 
 // Querying the status of the database
 - (int64_t)identifierOfLastInsert;
@@ -46,6 +43,12 @@ extern NSString *const AJKSqliteDatabaseError;
 
 // Manage cached objects
 - (void)removeUnusedCachedStatements;
+
+
+// Treat these methods as largely private, you should only be used to creat more efficient execute... style methods
+- (AJKSqliteStatement *)statementForQuery:(NSString *)query error:(NSError **)outError;
+- (void)bindObject:(id)objectToBind toColumn:(int)columnIndex inStatement:(sqlite3_stmt *)statement;
+- (void)addResultSet:(AJKResultSet *)resultSet;
 
 // Treat these methods as private, only AJKSqliteStatement and AJKResultSet should call these methods
 - (void)decrementUsageOfStatement:(AJKSqliteStatement *)statement;

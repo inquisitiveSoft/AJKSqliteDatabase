@@ -13,12 +13,6 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 	NSMutableDictionary *cachedStatements_, *activeResultsSets_;
 }
 
-- (AJKSqliteStatement *)statementForQuery:(NSString *)query error:(NSError **)outError;
-- (void)bindObject:(id)objectToBind toColumn:(int)columnIndex inStatement:(sqlite3_stmt *)statement;
-
-// Managing result sets
-- (void)addResultSet:(AJKResultSet *)resultSet;
-
 @end
 
 
@@ -143,7 +137,7 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 		return TRUE;
 	
 	if(outError != NULL) {
-		NSString *errorDescription = [NSString stringWithFormat:@"Encountered an error while calling sqlite3_step() foe the '%@' query,: %d	%@", query, result, [self lastErrorMessage]];
+		NSString *errorDescription = [NSString stringWithFormat:@"Encountered an error while calling sqlite3_step() for the '%@' query,: %d	%@", query, result, [self lastErrorMessage]];
 		*outError = [NSError errorWithDomain:AJKSqliteDatabaseError code:result userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
 												errorDescription, NSLocalizedDescriptionKey,
 														nil]];
@@ -370,27 +364,41 @@ NSString *const AJKSqliteDatabaseError = @"AJKSqliteDatabaseError";
 #pragma mark -
 #pragma mark Manage tables
 
-- (BOOL)createTable:(NSString *)tableName withColumns:(NSDictionary *)columnsForTypes
+- (BOOL)createTable:(NSString *)tableName withColumns:(NSDictionary *)columnsForTypes error:(NSError **)outError
 {
-	if(!tableName || ([tableName length] <= 0))
+	if(!tableName || ([tableName length] <= 0)) {
+		if(outError != NULL) {
+			NSDictionary *errorDictionary = [NSDictionary dictionaryWithObject:NSLocalizedString(@"Tried to create a table without a name", @"Sqlite related error") forKey:NSLocalizedDescriptionKey];
+			*outError = [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:errorDictionary];
+		}
+		
 		return FALSE;
+	}
 	
 	// Search in sqlite_master table if table exists
 	AJKResultSet *resultSet = [self executeQuery:@"select [sql] from sqlite_master where [type] = 'table' and lower(name) = ?" withArguments:[NSArray arrayWithObject:[tableName lowercaseString]] error:nil];
 	BOOL foundTable = [resultSet nextRow];
 	[resultSet close];
 	
+	
 	// Create the table if an existing one couldn't be found
 	if(!foundTable) {
-		NSMutableString *columnsString = [[NSMutableString alloc] initWithString:@" "];
-		[columnsForTypes enumerateKeysAndObjectsUsingBlock:^ (id key, id object) {
-			[columnsString appendFormat:@"%@ %@, ", key, object];
+		NSMutableString *columns = [[NSMutableString alloc] init];
+		__block BOOL firstColumn = TRUE;
+		[columnsForTypes enumerateKeysAndObjectsUsingBlock:^ (id columnName, id type, BOOL *stop) {
+			if(firstColumn)
+				[columns appendFormat:@"%@ %@", columnName, type];
+			else
+				[columns appendFormat:@", %@ %@", columnName, type];
+			
+			firstColumn = FALSE;			
 		}];
 		
-		return [self executeUpdate:@"create table ? (?)" withArguments:[NSArray arrayWithObjects:tableName, columnsString, nil] error:nil];
+		return [self executeUpdate:[NSString stringWithFormat:@"create table %@ (%@)", tableName, columns] withArguments:nil error:outError];
 	}
 	
-	// Check that the table contains the right columns
+	
+	// Check that the table contains the expected columns ??
 	
 	
 	return TRUE;

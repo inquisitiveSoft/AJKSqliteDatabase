@@ -55,9 +55,7 @@ NSString *const AJKResultSetError = @"AJKResultSetError";
 			[columnNamesForIndexes setObject:columnIndexValue forKey:columnName];
 		}
 	}
-	
-	NSLog(@"columnNamesForIndexes: %@", columnNamesForIndexes);
-	
+		
 	// Assign immutable copies
 	self.columnNames = [columnNames copy];
 	self.columnNamesForIndexes = [columnNamesForIndexes copy];
@@ -102,7 +100,6 @@ NSString *const AJKResultSetError = @"AJKResultSetError";
 - (NSDictionary *)allValuesForCurrentRowWithError:(NSError **)outError
 {
 	NSDictionary *columnNamesForIndexes = [self columnNamesForIndexes];
-	NSLog(@"columnNamesForIndexes: %@", columnNamesForIndexes);
 	
 	int numberOfColumns = (int)[columnNamesForIndexes count];
 	if(numberOfColumns <= 0) {
@@ -220,9 +217,9 @@ NSString *const AJKResultSetError = @"AJKResultSetError";
 		if(columnNumber)
 			return [columnNumber intValue];
 	}
-    
-    NSLog(@"Couldn't find a column named '%@'.", [columnName lowercaseString]);
-    return -1;
+	
+	NSLog(@"Couldn't find a column named '%@'.", [columnName lowercaseString]);
+	return -1;
 }
 
 
@@ -264,7 +261,7 @@ NSString *const AJKResultSetError = @"AJKResultSetError";
 
 
 - (BOOL)boolForColumn:(NSString *)columnName {
-    return ([self int32ForColumn:columnName] > 0);
+	return ([self int32ForColumn:columnName] > 0);
 }
 
 
@@ -277,15 +274,15 @@ NSString *const AJKResultSetError = @"AJKResultSetError";
 
 
 - (int32_t)int32ForColumn:(NSString *)columnName {
-    return [self int32ForColumnAtIndex:[self indexOfColumn:columnName]];
+	return [self int32ForColumnAtIndex:[self indexOfColumn:columnName]];
 }
 
 - (int64_t)int64ForColumn:(NSString *)columnName {
-    return [self int64ForColumnAtIndex:[self indexOfColumn:columnName]];
+	return [self int64ForColumnAtIndex:[self indexOfColumn:columnName]];
 }
 
 - (double)doubleForColumn:(NSString *)columnName {
-    return [self doubleForColumnAtIndex:[self indexOfColumn:columnName]];
+	return [self doubleForColumnAtIndex:[self indexOfColumn:columnName]];
 }
 
 
@@ -293,7 +290,7 @@ NSString *const AJKResultSetError = @"AJKResultSetError";
 #pragma mark Accessing object values
 
 - (NSString *)stringForColumn:(NSString *)columnName {
-    return [self stringForColumnAtIndex:[self indexOfColumn:columnName]];
+	return [self stringForColumnAtIndex:[self indexOfColumn:columnName]];
 }
 
 
@@ -311,12 +308,12 @@ NSString *const AJKResultSetError = @"AJKResultSetError";
 }
 
 - (NSData *)dataForColumn:(NSString *)columnName {
-    return [self dataForColumnAtIndex:[self indexOfColumn:columnName]];
+	return [self dataForColumnAtIndex:[self indexOfColumn:columnName]];
 }
 
 
 - (id)objectForColumn:(NSString *)columnName {
-    return [self objectForColumnAtIndex:[self indexOfColumn:columnName]];
+	return [self objectForColumnAtIndex:[self indexOfColumn:columnName]];
 }
 
 
@@ -375,16 +372,16 @@ NSString *const AJKResultSetError = @"AJKResultSetError";
 		
 		if(cString)
 			result = [NSString stringWithUTF8String:cString];
-    });
-    
-    return result;
+	});
+	
+	return result;
 }
 
 
 - (NSData *)dataForColumnAtIndex:(int)columnIndex {
 	if((columnIndex < 0) || [self columnAtIndexIsNull:columnIndex])
 		return nil;
-    
+	
 	__block NSMutableData *data = nil;
 	dispatch_sync_avoiding_deadlocks([AJKSqliteDatabase queue], ^{
 		int dataSize = sqlite3_column_bytes([[self statement] statementHandle], columnIndex);

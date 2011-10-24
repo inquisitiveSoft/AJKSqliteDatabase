@@ -56,7 +56,7 @@
 
 - (void)testCreateTable {
 	NSError *error = nil;
-	BOOL success = [database executeUpdate:@"create table trees (name text, description text, awesomeness integer, height double, age double)" withArguments:nil error:&error];
+	BOOL success = [database executeUpdate:@"CREATE TABLE trees (name text, description text, awesomeness integer, height double, age double)" withArguments:nil error:&error];
 	if(!success) {
 		GHFail(@"Couldn't create table: %@", error);
 	}
@@ -64,8 +64,8 @@
 
 - (void)testRecreateTableWithIdenticalName {
 	NSError *error = nil;
-	BOOL success = [database executeUpdate:@"create table trees (name text, seed text)" withArguments:nil error:&error];
-	GHAssertFalse(success, @"Shouldn't be able to create table: %@", error);
+	BOOL success = [database executeUpdate:@"CREATE TABLE trees (name text, seed text)" withArguments:nil error:&error];
+	GHAssertFalse(success, @"Shouldn't be able to create a table with an identical name: %@", error);
 	GHTestLog(@"%@", error);
 }
 
@@ -84,16 +84,16 @@
 																					nil];
 	
 	GHTestLog(@"Input: %@\n\n", inputArguments);
-	BOOL result = [database executeUpdate:@"insert into trees (name, description, awesomeness, height, age) values (?, ?, ?, ?, ?)" withArguments:inputArguments error:&error];
+	BOOL result = [database executeUpdate:@"INSERT INTO trees (name, description, awesomeness, height, age) VALUES (?, ?, ?, ?, ?)" withArguments:inputArguments error:&error];
 	GHAssertTrue(result, @"Failed to insert a row into the trees table");
 	
 	error = nil;
-	AJKResultSet *resultSet = [database executeQuery:@"select * from trees" withArguments:nil error:&error];
-	GHAssertTrue((BOOL)resultSet, @"select * from trees, failed, %@", error);
+	AJKResultSet *resultSet = [database executeQuery:@"SELECT * FROM trees" withArguments:nil error:&error];
+	GHAssertTrue((BOOL)resultSet, @"SELECT * FROM trees, failed, %@", error);
 	
 	error = nil;
 	NSArray *results = [resultSet resultsWithError:&error];
-	GHAssertTrue([results count] == 1, @"select * from trees, should return one result rather than '%d', %@", [results count], error);
+	GHAssertTrue([results count] == 1, @"SELECT * FROM trees, should return one result rather than '%d', %@", [results count], error);
 	GHTestLog(@"Output:\n%@\n\n", results);
 	
 	NSString *resultName = [resultSet stringForColumn:@"name"];
@@ -107,7 +107,18 @@
 }
 
 
-
+- (void)testCreatingAnotherTable {
+	NSError *error = nil;
+	BOOL success = [database createTable:@"measurements" withColumns:[NSDictionary dictionaryWithObjectsAndKeys:
+															@"integer", @"identifier",
+															@"double", @"timestamp",
+															@"double", @"x",
+															@"double", @"y",
+															@"double", @"z",
+																		nil] error:&error];
+	
+	GHAssertTrue(success, @"Couldn't create a table using the -createTable:withColumns: method: %@", error);
+}
 
 
 - (void)testRemoveTemporaryDatabase {
@@ -116,7 +127,6 @@
 	NSError *error = nil;
 	GHAssertTrue([[NSFileManager defaultManager] removeItemAtURL:databaseURL error:&error], @"Couldn't delete the temporary database file: %@", error);
 }
-
 
 
 @end

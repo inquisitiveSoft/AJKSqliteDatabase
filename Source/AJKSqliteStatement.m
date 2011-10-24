@@ -2,6 +2,7 @@
 #import "AJKSqliteDatabase.h"
 
 #import "AJKBlockFunctions.h"
+#import "libkern/OSAtomic.h"
 
 
 @interface AJKSqliteStatement () {
