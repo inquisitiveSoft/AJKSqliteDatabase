@@ -212,13 +212,22 @@ NSString *const AJKResultSetError = @"AJKResultSetError";
 
 - (int)indexOfColumn:(NSString *)columnName
 {
+	return [self indexOfColumn:(NSString *)columnName caseSensitive:FALSE];
+}
+
+
+- (int)indexOfColumn:(NSString *)columnName caseSensitive:(BOOL)caseSensitive
+{
+	if(!caseSensitive)
+		columnName = [columnName lowercaseString];
+	
 	@synchronized(self) {
-		NSNumber *columnNumber = [[self columnNamesForIndexes] objectForKey:[columnName lowercaseString]];
+		NSNumber *columnNumber = [[self columnNamesForIndexes] objectForKey:columnName];
 		if(columnNumber)
 			return [columnNumber intValue];
 	}
 	
-	NSLog(@"Couldn't find a column named '%@'.", [columnName lowercaseString]);
+	NSLog(@"Couldn't find a column named '%@'.", columnName);
 	return -1;
 }
 

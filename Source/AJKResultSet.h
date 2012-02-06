@@ -24,6 +24,7 @@ extern NSString *const AJKResultSetError;
 
 - (int)numberOfColumns;
 - (int)indexOfColumn:(NSString *)columnName;
+- (int)indexOfColumn:(NSString *)columnName caseSensitive:(BOOL)caseSensitive;
 - (NSString *)columnNameAtIndex:(int)columnIndex;
 
 - (BOOL)columnIsNull:(NSString *)columnName;
