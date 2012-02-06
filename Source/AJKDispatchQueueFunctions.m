@@ -1,4 +1,4 @@
-#import "AJKBlockFunctions.h"
+#import "AJKDispatchQueueFunctions.h"
 
 
 void dispatch_sync_avoiding_deadlocks(dispatch_queue_t queue, dispatch_block_t block) {

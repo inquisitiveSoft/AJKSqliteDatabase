@@ -3,7 +3,7 @@
 #import "AJKSqliteStatement.h"
 
 #import "sqlite3.h"
-#import "AJKBlockFunctions.h"
+#import "AJKDispatchQueueFunctions.h"
 
 
 NSString *const AJKResultSetError = @"AJKResultSetError";
